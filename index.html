@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Title</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="background-color: rgba(0, 0, 255, 0);">
+
+
+        <div class="step active" id="step2">
+            <h2>แต้มเจ้า</h2>
+            <div class="btn-container" style="display: flex; justify-content: space-between;">
+                <div class="btn-column" id="numberButtons"></div>
+                <div class="btn-column" id="bounceButtons"></div>
+            </div>
+            <div class="btn-group">
+                <div style="display: flex;justify-content: space-between;">
+                    <button class="btn" id="backButton2">Back</button>
+                    <button id="next2" class="btn" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step3">
+            <h2 id="step3Title">แต้มขาที่ 1</h2>
+            <div class="btn-container">
+                <div class="btn-column" id="pointsNumberButtons"></div>
+                <div class="btn-column" id="pointsBounceButtons"></div>
+            </div>
+            <div class="btn-group">
+                <div style="display: flex;justify-content: space-between;">
+                    <button class="btn" id="backButton3">Back</button>
+                    <button id="next3" class="btn" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step4">
+            <h2>สรุปผล</h2>
+            <br> <br> <br>
+            <div class="summary" id="summary"></div>
+            <div class="btn-group">
+                <button class="btn" id="startOver">Start Over</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="logic.js"></script>
+</body>
+
+</html>

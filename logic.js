@@ -206,9 +206,9 @@ function displaySummary() {
       const selectedButtons_owne = selectedButtons["step2"].value || selectedButtons["step2"].textContent || String(selectedButtons["step2"]);
       
       if (selectedButtons_owne.includes("เด้ง")) {
-          text += "," + selectedButtons_owne.replace("เด้ง", "");
+          text += "S" + selectedButtons_owne.replace("เด้ง", "");
       } else {
-          text += "," + selectedButtons_owne;
+          text += "S" + selectedButtons_owne;
       }
   }
   

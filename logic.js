@@ -203,9 +203,9 @@ function displaySummary() {
   let text = "";
   const selectedButtons_owne = String(selectedButtons["step2"]);
   if (selectedButtons_owne.includes(" เด้ง")) {
-    text += "," + selectedButtons_owne.replace(" เด้ง", "");
+    text += "S" + selectedButtons_owne.replace(" เด้ง", "").trim();
   } else {
-    text += "," + selectedButtons_owne;
+    text += "S" + selectedButtons_owne;
   }
   points.forEach((point) => {
     const pointStr = String(point);

@@ -201,8 +201,11 @@ function displaySummary() {
     summary.innerHTML += `<p>แต้มขาที่ ${index + 1}: ${point}</p>`;
   });
   let text = "";
-  text += "S" + (selectedButtons["step2"] ? selectedButtons["step2"].textContent : "");
-
+  if (selectedButtons["step2"].includes(" เด้ง")) {
+    text += "," + selectedButtons["step2"].replace(" เด้ง", "");
+  } else {
+    text += "," + selectedButtons["step2"];
+  }
   points.forEach((point) => {
     const pointStr = String(point);
     if (pointStr.includes(" เด้ง")) {

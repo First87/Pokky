@@ -201,10 +201,11 @@ function displaySummary() {
     summary.innerHTML += `<p>แต้มขาที่ ${index + 1}: ${point}</p>`;
   });
   let text = "";
-  if (selectedButtons["step2"].includes(" เด้ง")) {
-    text += "," + selectedButtons["step2"].replace(" เด้ง", "");
+  const selectedButtons_owne = String(selectedButtons["step2"]);
+  if (selectedButtons_owne.includes(" เด้ง")) {
+    text += "," + selectedButtons_owne.replace(" เด้ง", "");
   } else {
-    text += "," + selectedButtons["step2"];
+    text += "," + selectedButtons_owne;
   }
   points.forEach((point) => {
     const pointStr = String(point);

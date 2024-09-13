@@ -201,20 +201,28 @@ function displaySummary() {
     summary.innerHTML += `<p>แต้มขาที่ ${index + 1}: ${point}</p>`;
   });
   let text = "";
-  const selectedButtons_owne = String(selectedButtons["step2"]);
-  if (selectedButtons_owne.includes(" เด้ง")) {
-    text += "S" + selectedButtons_owne.replace(" เด้ง", "").trim();
-  } else {
-    text += "S" + selectedButtons_owne;
+
+  if (selectedButtons && selectedButtons["step2"]) {
+      const selectedButtons_owne = selectedButtons["step2"].value || selectedButtons["step2"].textContent || String(selectedButtons["step2"]);
+      
+      if (selectedButtons_owne.includes("เด้ง")) {
+          text += "," + selectedButtons_owne.replace("เด้ง", "");
+      } else {
+          text += "," + selectedButtons_owne;
+      }
   }
-  points.forEach((point) => {
-    const pointStr = String(point);
-    if (pointStr.includes(" เด้ง")) {
-      text += "," + pointStr.replace(" เด้ง", "");
-    } else {
-      text += "," + pointStr;
-    }
-  });
+  
+  if (Array.isArray(points)) {
+      points.forEach((point) => {
+          const pointStr = point.value || point.textContent || String(point);
+  
+          if (pointStr.includes("เด้ง")) {
+              text += "," + pointStr.replace("เด้ง", "");
+          } else {
+              text += "," + pointStr;
+          }
+      });
+  }
   liff
   .shareTargetPicker(
     [

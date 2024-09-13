@@ -178,7 +178,16 @@ function resetPointSelection() {
       }
     });
 }
-
+const liffId = "2006065768-no9MYKVg"
+liff.init({liffId: liffId})
+    .then(() => {
+      if (!liff.isLoggedIn()) {
+          liff.login();
+      }
+    })
+    .catch((err) => {
+      console.log(err.code, err.message);
+    });
 function displaySummary() {
   const summary = document.getElementById("summary");
 
@@ -238,16 +247,7 @@ function displaySummary() {
     });
   });
 }
-const liffId = ""
-liff.init({liffId: liffId})
-    .then(() => {
-      if (!liff.isLoggedIn()) {
-          liff.login();
-      }
-    })
-    .catch((err) => {
-      console.log(err.code, err.message);
-    });
+
 document.getElementById("backButton2").addEventListener("click", previousStep);
 document.getElementById("backButton3").addEventListener("click", previousStep);
 

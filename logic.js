@@ -50,7 +50,7 @@ function previousStep() {
 
 function updateStep3Title() {
   const step3Title = document.getElementById("step3Title");
-  step3Title.innerText = `แต้มขาที่ ${currentLegIndex + 1}`;
+  step3Title.innerText = `ขาที่ ${currentLegIndex + 1}`;
 }
 
 function updateNextButtonVisibility() {
@@ -82,6 +82,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep2Button(btn, i);
   });
   numberButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 หลังจากปุ่ม 7
+  if (i === 7) {
+    const btn75 = document.createElement("button");
+    btn75.textContent = "7.5";
+    btn75.classList.add("number-btn");
+    btn75.addEventListener("click", () => {
+      selectStep2Button(btn75, "7.5");
+    });
+    numberButtons.appendChild(btn75);
+  }
 }
 
 // สร้างปุ่ม "เด้ง" สำหรับ Step 2
@@ -94,6 +105,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep2Button(btn, `${i} เด้ง`);
   });
   bounceButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 เด้งหลังจากปุ่ม 7 เด้ง
+  if (i === 7) {
+    const btn75Bounce = document.createElement("button");
+    btn75Bounce.textContent = "7.5 เด้ง";
+    btn75Bounce.classList.add("number-btn", "red");
+    btn75Bounce.addEventListener("click", () => {
+      selectStep2Button(btn75Bounce, "7.5 เด้ง");
+    });
+    bounceButtons.appendChild(btn75Bounce);
+  }
 }
 
 function selectStep2Button(button, value) {
@@ -121,6 +143,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep3Button(btn, i);
   });
   pointsNumberButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 หลังจากปุ่ม 7
+  if (i === 7) {
+    const btn75Step3 = document.createElement("button");
+    btn75Step3.textContent = "7.5";
+    btn75Step3.classList.add("number-btn");
+    btn75Step3.addEventListener("click", () => {
+      selectStep3Button(btn75Step3, "7.5");
+    });
+    pointsNumberButtons.appendChild(btn75Step3);
+  }
 }
 
 // สร้างปุ่ม "เด้ง" สำหรับ Step 3
@@ -133,6 +166,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep3Button(btn, `${i} เด้ง`);
   });
   pointsBounceButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 เด้งหลังจากปุ่ม 7 เด้ง
+  if (i === 7) {
+    const btn75BounceStep3 = document.createElement("button");
+    btn75BounceStep3.textContent = "7.5 เด้ง";
+    btn75BounceStep3.classList.add("number-btn", "red");
+    btn75BounceStep3.addEventListener("click", () => {
+      selectStep3Button(btn75BounceStep3, "7.5 เด้ง");
+    });
+    pointsBounceButtons.appendChild(btn75BounceStep3);
+  }
 }
 
 function selectStep3Button(button, value) {
@@ -178,16 +222,7 @@ function resetPointSelection() {
       }
     });
 }
-const liffId = "2006065768-no9MYKVg"
-liff.init({liffId: liffId})
-    .then(() => {
-      if (!liff.isLoggedIn()) {
-          liff.login();
-      }
-    })
-    .catch((err) => {
-      console.log(err.code, err.message);
-    });
+
 function displaySummary() {
   const summary = document.getElementById("summary");
 
@@ -198,65 +233,7 @@ function displaySummary() {
   } แต้ม:</p>`;
 
   points.forEach((point, index) => {
-    summary.innerHTML += `<p>แต้มขาที่ ${index + 1}: ${point}</p>`;
-  });
-  let text = "";
-
-  if (selectedButtons && selectedButtons["step2"]) {
-      const selectedButtons_owne = selectedButtons["step2"].value || selectedButtons["step2"].textContent || String(selectedButtons["step2"]);
-      
-      if (selectedButtons_owne.includes("เด้ง")) {
-          text += "S2" + selectedButtons_owne.replace("เด้ง", "").strip();
-      } else {
-          text += "S1" + selectedButtons_owne;
-      }
-  }
-  
-  if (Array.isArray(points)) {
-      points.forEach((point) => {
-          const pointStr = point.value || point.textContent || String(point);
-  
-          if (pointStr.includes("เด้ง")) {
-              text += ",2" + pointStr.replace("เด้ง", "").strip();
-          } else {
-              text += ",1" + pointStr;
-          }
-      });
-  }
-  liff
-  .shareTargetPicker(
-    [
-      {
-        type: "text",
-        text: text,
-      },
-    ],
-    {
-      isMultiple: true,
-    }
-  )
-  .then(function (res) {
-    if (res) {
-      Swal.fire({
-        title: "ส่งข้อความสำเร็จ!",
-        text: `[${res.status}] Message sent!`,
-        icon: "success"
-      });
-    } else {
-      Swal.fire({
-        title: "เกิดข้อผิดพลาด",
-        text: `TargetPicker was closed!`,
-        icon: "error"
-      });
-    }
-  })
-  .catch(function (error) {
-    console.log("something wrong happen");
-    Swal.fire({
-      title: "เกิดข้อผิดพลาด",
-      text: `${error}`,
-      icon: "error"
-    });
+    summary.innerHTML += `<p>ขาที่ ${index + 1}: ${point}</p>`;
   });
 }
 
@@ -279,12 +256,7 @@ document.getElementById("startOver").addEventListener("click", () => {
     button.classList.remove("active");
   });
 
-  document.getElementById("summary").innerHTML = "";
-
-  document.querySelectorAll('input[type="number"]').forEach((input) => {
-    input.value = "";
-  });
-
+  document.getElementById("summary").style.display = "none";
   updateNextButtonVisibility();
 });
 

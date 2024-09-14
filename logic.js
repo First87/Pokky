@@ -206,9 +206,9 @@ function displaySummary() {
       const selectedButtons_owne = selectedButtons["step2"].value || selectedButtons["step2"].textContent || String(selectedButtons["step2"]);
       
       if (selectedButtons_owne.includes("เด้ง")) {
-          text += "S" + selectedButtons_owne.replace("เด้ง", "").strip();
+          text += "S2" + selectedButtons_owne.replace("เด้ง", "").strip();
       } else {
-          text += "S" + selectedButtons_owne;
+          text += "S1" + selectedButtons_owne;
       }
   }
   
@@ -217,9 +217,9 @@ function displaySummary() {
           const pointStr = point.value || point.textContent || String(point);
   
           if (pointStr.includes("เด้ง")) {
-              text += "," + pointStr.replace("เด้ง", "").strip();
+              text += ",2" + pointStr.replace("เด้ง", "").strip();
           } else {
-              text += "," + pointStr;
+              text += ",1" + pointStr;
           }
       });
   }
